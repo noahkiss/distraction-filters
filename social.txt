@@ -71,3 +71,4 @@ youtube.com##ytd-continuation-item-renderer
 youtube.com##ytd-rich-section-renderer
 youtube.com##ytm-continuation-item-renderer
 youtube.com##ytm-rich-section-renderer
+youtube.com###secondary
