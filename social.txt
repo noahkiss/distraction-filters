@@ -32,20 +32,21 @@ reddit.com##shreddit-screenview-data
 reddit.com##shreddit-post-share-button
 reddit.com##award-button
 
-old.reddit.com##.premium-banner
-old.reddit.com##.footer-parent
-old.reddit.com##.debuginfo
-old.reddit.com##.listingsignupbar.infobar
-old.reddit.com###header
-old.reddit.com##.menuarea
-old.reddit.com##.listing-chooser
-old.reddit.com##.side
-old.reddit.com##.bottom-area > .reddiquette
-old.reddit.com##.bottom-area > .help-toggle
-old.reddit.com##.commentsignupbar.infobar
-old.reddit.com##.sitetable.linklisting > .thing[data-context="listing"]
-old.reddit.com##.nav-buttons
-old.reddit.com##.panestack-title > .title-button
+! mainly old.reddit.com
+reddit.com##.premium-banner
+reddit.com##.footer-parent
+reddit.com##.debuginfo
+reddit.com##.listingsignupbar.infobar
+reddit.com###header
+reddit.com##.menuarea
+reddit.com##.listing-chooser
+reddit.com##.side
+reddit.com##.bottom-area > .reddiquette
+reddit.com##.bottom-area > .help-toggle
+reddit.com##.commentsignupbar.infobar
+reddit.com##.sitetable.linklisting > .thing[data-context="listing"]
+reddit.com##.nav-buttons
+reddit.com##.panestack-title > .title-button
 
 facebook.com##div[aria-label="Stories"]
 facebook.com##div[role="complementary"]
