@@ -1,1 +1,42 @@
+! Social filters (Reddit, YouTube, etc.)
 
+reddit.com##.avatar
+reddit.com##.community-hover-card
+reddit.com##.flex-sidebar
+reddit.com##.h-header-large
+reddit.com##.left-sidebar
+reddit.com##.masthead
+reddit.com##.reddit-header-large
+reddit.com##.relative.inline-block.rounded-full
+reddit.com##.right-sidebar
+reddit.com##.shreddit-subreddit-icon__icon
+reddit.com##.user-hover-card
+reddit.com##.w-full.masthead
+reddit.com###feed-next-page-partial
+reddit.com##article
+reddit.com##auth-flow-google-one-tap-prompt
+reddit.com##faceplate-loader
+reddit.com##faceplate-perfmetric-collector
+reddit.com##faceplate-server-session
+reddit.com##faceplate-tracker span[avatar]
+reddit.com##hr
+reddit.com##protected-community-modal
+reddit.com##reddit-page-data
+reddit.com##shreddit-activated-feature-meta
+reddit.com##shreddit-async-loader
+reddit.com##shreddit-feed-page-loading
+reddit.com##shreddit-good-visit-tracker
+reddit.com##shreddit-page-meta
+reddit.com##shreddit-recent-communities-data
+reddit.com##shreddit-screenview-data
+
+old.reddit.com##.premium-banner
+old.reddit.com##.footer-parent
+old.reddit.com##.debuginfo
+old.reddit.com##.listingsignupbar.infobar
+old.reddit.com###header
+old.reddit.com##.menuarea
+old.reddit.com##.side
+old.reddit.com##.commentsignupbar.infobar
+old.reddit.com##.sitetable.linklisting > .thing[data-context="listing"]
+old.reddit.com##.nav-buttons
