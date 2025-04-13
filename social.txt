@@ -46,3 +46,28 @@ old.reddit.com##.commentsignupbar.infobar
 old.reddit.com##.sitetable.linklisting > .thing[data-context="listing"]
 old.reddit.com##.nav-buttons
 old.reddit.com##.panestack-title > .title-button
+
+facebook.com##div[aria-label="Stories"]
+facebook.com##div[role="complementary"]
+
+youtube.com##:not(:matches-path(/feed/)) ytd-rich-item-renderer:nth-child(n+13)
+youtube.com##:not(:matches-path(/feed/)) ytm-rich-item-renderer:nth-child(n+7)
+youtube.com##.chip-bar
+youtube.com##.shortsLockupViewModelHost
+youtube.com##.ytd-brand-video-singleton-renderer
+youtube.com##.ytd-chips-shelf-view-model--is-inner-chips-shelf
+youtube.com##.ytm-brand-video-singleton-renderer
+youtube.com##.ytm-chips-shelf-view-model--is-inner-chips-shelf
+youtube.com###footer
+youtube.com###scroll-container
+youtube.com##p.ytd-badge-supported-renderer:upward(.ytd-feed-entry-renderer)
+youtube.com##span.yt-core-attributed-string:has-text(Shorts):upward(yt-shelf-header-layout)
+youtube.com##span.yt-core-attributed-string:has-text(Shorts):upward(yt-shelf-header-layout)
+youtube.com##span.ytd-mini-guide-entry-renderer:has-text(Shorts):upward(a.ytd-mini-guide-entry-renderer)
+youtube.com##yt-formatted-string.ytd-guide-entry-renderer:has-text(Shorts):upward(a.ytd-guide-entry-renderer)
+youtube.com##yt-formatted-string#guide-section-title:has-text(Explore):upward(ytd-guide-section-renderer)
+youtube.com##yt-formatted-string#guide-section-title:has-text(More from YouTube):upward(ytd-guide-section-renderer)
+youtube.com##ytd-continuation-item-renderer
+youtube.com##ytd-rich-section-renderer
+youtube.com##ytm-continuation-item-renderer
+youtube.com##ytm-rich-section-renderer
