@@ -29,6 +29,8 @@ reddit.com##shreddit-good-visit-tracker
 reddit.com##shreddit-page-meta
 reddit.com##shreddit-recent-communities-data
 reddit.com##shreddit-screenview-data
+reddit.com##shreddit-post-share-button
+reddit.com##award-button
 
 old.reddit.com##.premium-banner
 old.reddit.com##.footer-parent
@@ -36,7 +38,11 @@ old.reddit.com##.debuginfo
 old.reddit.com##.listingsignupbar.infobar
 old.reddit.com###header
 old.reddit.com##.menuarea
+old.reddit.com##.listing-chooser
 old.reddit.com##.side
+old.reddit.com##.bottom-area > .reddiquette
+old.reddit.com##.bottom-area > .help-toggle
 old.reddit.com##.commentsignupbar.infobar
 old.reddit.com##.sitetable.linklisting > .thing[data-context="listing"]
 old.reddit.com##.nav-buttons
+old.reddit.com##.panestack-title > .title-button
