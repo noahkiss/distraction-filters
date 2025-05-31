@@ -53,7 +53,7 @@ facebook.com##div[role="complementary"]
 
 ! matches-path is ublock-specific
 ! youtube.com##:not(:matches-path(/feed/)) ytd-rich-item-renderer:nth-child(n+13)
-youtube.com##:not(:matches-path(/feed/)) ytm-rich-item-renderer:nth-child(n+7)
+! youtube.com##:not(:matches-path(/feed/)) ytm-rich-item-renderer:nth-child(n+7)
 ! repeat without matches-path
 ! youtube.com##ytd-rich-item-renderer:nth-child(n+13)
 youtube.com##ytm-rich-item-renderer:nth-child(n+7)
@@ -108,8 +108,8 @@ www.youtube.com##ytd-guide-entry-renderer:has(yt-formatted-string:has-text(/^Sho
 www.youtube.com##ytd-mini-guide-entry-renderer:has(.title:has-text(/^Shorts$/i))
 
 ! Hide shorts sections except on history page
-www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
-www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
+! www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
+! www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
 
 ! Hide shorts tab on channel pages`
 ! Old style
@@ -138,8 +138,8 @@ m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
 m.youtube.com##ytm-video-with-context-renderer:has([data-style="SHORTS"])
 
 ! Hide shorts sections except on history page
-m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
-m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-reel-shelf-renderer.item:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
+! m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
+! m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-reel-shelf-renderer.item:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
 
 ! Hide shorts tab on channel pages
 ! Old style
@@ -154,6 +154,6 @@ m.youtube.com##ytm-reel-shelf-renderer:has(.reel-shelf-title-wrapper .yt-core-at
 m.youtube.com##ytm-chip-cloud-chip-renderer:has(.yt-core-attributed-string:has-text(/^Shorts$/i))
 
 !!! Separate, from issue comment
-m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer
+! m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
