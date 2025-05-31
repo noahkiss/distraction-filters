@@ -51,3 +51,14 @@ reddit.com##.panestack-title > .title-button
 facebook.com##div[aria-label="Stories"]
 facebook.com##div[role="complementary"]
 
+youtube.com##.ytp-suggestion-set
+youtube.com##.ytp-endscreen-content
+youtube.com##.ytp-videowall-still-info
+youtube.com###primary
+youtube.com###secondary
+youtube.com###masthead
+youtube.com###header
+youtube.com###columns
+youtube.com###footer
+youtube.com###sections
+youtube.com###guide
