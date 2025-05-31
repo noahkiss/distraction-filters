@@ -51,8 +51,13 @@ reddit.com##.panestack-title > .title-button
 facebook.com##div[aria-label="Stories"]
 facebook.com##div[role="complementary"]
 
-youtube.com##:not(:matches-path(/feed/)) ytd-rich-item-renderer:nth-child(n+13)
+! matches-path is ublock-specific
+! youtube.com##:not(:matches-path(/feed/)) ytd-rich-item-renderer:nth-child(n+13)
 youtube.com##:not(:matches-path(/feed/)) ytm-rich-item-renderer:nth-child(n+7)
+! repeat without matches-path
+! youtube.com##ytd-rich-item-renderer:nth-child(n+13)
+youtube.com##ytm-rich-item-renderer:nth-child(n+7)
+
 youtube.com##.chip-bar
 youtube.com##.shortsLockupViewModelHost
 youtube.com##.ytd-brand-video-singleton-renderer
