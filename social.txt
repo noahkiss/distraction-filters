@@ -1,5 +1,10 @@
 ! Social filters (Reddit, YouTube, etc.)
 
+! hn
+news.ycombinator.com###hnmain > tbody > tr > td > table:not(.comment-tree):not(.fatitem)
+news.ycombinator.com##.yclinks
+
+! reddit
 reddit.com##.avatar
 reddit.com##.community-hover-card
 reddit.com##.flex-sidebar
@@ -48,9 +53,11 @@ reddit.com##.sitetable.linklisting > .thing[data-context="listing"]
 reddit.com##.nav-buttons
 reddit.com##.panestack-title > .title-button
 
+! facebook
 facebook.com##div[aria-label="Stories"]
 facebook.com##div[role="complementary"]
 
+! youtube
 ! player elements
 youtube.com##.ytp-next-button
 youtube.com##.ytp-suggestion-set
