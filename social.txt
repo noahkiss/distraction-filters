@@ -51,9 +51,12 @@ reddit.com##.panestack-title > .title-button
 facebook.com##div[aria-label="Stories"]
 facebook.com##div[role="complementary"]
 
+! player elements
+youtube.com##.ytp-next-button
 youtube.com##.ytp-suggestion-set
 youtube.com##.ytp-endscreen-content
 youtube.com##.ytp-videowall-still-info
+! main elements
 youtube.com###primary
 youtube.com###secondary
 youtube.com###masthead
