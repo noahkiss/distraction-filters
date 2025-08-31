@@ -64,12 +64,12 @@ youtube.com##.ytp-suggestion-set
 youtube.com##.ytp-endscreen-content
 youtube.com##.ytp-videowall-still-info
 ! main elements
-youtube.com###secondary
-youtube.com###masthead
-youtube.com###header
-youtube.com###footer
-youtube.com###sections
-youtube.com###guide
+! youtube.com###secondary
+! youtube.com###masthead
+! youtube.com###header
+! youtube.com###footer
+! youtube.com###sections
+! youtube.com###guide
 ! mobile
 m.youtube.com###primary
 m.youtube.com###columns
