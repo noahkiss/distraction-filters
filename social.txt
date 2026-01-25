@@ -4,6 +4,19 @@
 news.ycombinator.com###hnmain > tbody > tr > td > table:not(.comment-tree):not(.fatitem)
 news.ycombinator.com##.yclinks
 
+  ! Title: Dracula HN theme
+  news.ycombinator.com##body, .c00:style(color: #f8f8f2 !important; background-color: #21222c !important; )
+  news.ycombinator.com##td[bgcolor="#ff6600"]:style(background-color: #444757 !important; )
+  news.ycombinator.com##[bgcolor="#f6f6ef"]:style(background-color: #21222c !important; )
+  news.ycombinator.com##[bgcolor="#000000"]:style(background-color: #ff5555 !important; )
+  news.ycombinator.com##tr#pagespace:style(display: none !important; )
+  news.ycombinator.com##b.hnname > a:style(color: #50fa7b !important; )
+  news.ycombinator.com##a:style(color: #bd93f9 !important; )
+  news.ycombinator.com##.subline:style(color: #f8f8f2 !important; )
+  news.ycombinator.com##.subline a:style(color: #999 !important; )
+  news.ycombinator.com##.score,#hnmain > tbody > tr td:last-child > span.pagetop:style(color: #ff79c6 !important; )
+  news.ycombinator.com##.sitestr:style(color: #8be9fd !important; )
+
 ! reddit
 reddit.com##.avatar
 reddit.com##.community-hover-card
