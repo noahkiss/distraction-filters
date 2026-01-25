@@ -16,6 +16,8 @@ news.ycombinator.com##.yclinks
   news.ycombinator.com##.subline a:style(color: #999 !important; )
   news.ycombinator.com##.score,#hnmain > tbody > tr td:last-child > span.pagetop:style(color: #ff79c6 !important; )
   news.ycombinator.com##.sitestr:style(color: #8be9fd !important; )
+  news.ycombinator.com##textarea, input:not([type="hidden"]):style(background-color: #444757 !important; color: #f8f8f2 !important; border: 1px solid #6272a4 !important; )
+  news.ycombinator.com##input[type="submit"]:style(cursor: pointer !important; font-weight: bold !important;)
 
 ! reddit
 reddit.com##.avatar
