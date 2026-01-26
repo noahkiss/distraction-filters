@@ -4,20 +4,42 @@
 news.ycombinator.com###hnmain > tbody > tr > td > table:not(.comment-tree):not(.fatitem)
 news.ycombinator.com##.yclinks
 
-  ! Title: Dracula HN theme
-  news.ycombinator.com##body, .c00:style(color: #f8f8f2 !important; background-color: #21222c !important; )
-  news.ycombinator.com##td[bgcolor="#ff6600"]:style(background-color: #444757 !important; )
-  news.ycombinator.com##[bgcolor="#f6f6ef"]:style(background-color: #21222c !important; )
-  news.ycombinator.com##[bgcolor="#000000"]:style(background-color: #ff5555 !important; )
-  news.ycombinator.com##tr#pagespace:style(display: none !important; )
-  news.ycombinator.com##b.hnname > a:style(color: #50fa7b !important; )
-  news.ycombinator.com##a:style(color: #bd93f9 !important; )
-  news.ycombinator.com##.subline, .toptext:style(color: #f8f8f2 !important; )
-  news.ycombinator.com##.subline a:style(color: #999 !important; )
-  news.ycombinator.com##.score,#hnmain > tbody > tr td:last-child > span.pagetop:style(color: #ff79c6 !important; )
-  news.ycombinator.com##.sitestr:style(color: #8be9fd !important; )
-  news.ycombinator.com##textarea, input:not([type="hidden"]):style(background-color: #444757 !important; color: #f8f8f2 !important; border: 1px solid #6272a4 !important; border-radius: 3px !important; )
-  news.ycombinator.com##input[type="submit"]:style(cursor: pointer !important; font-weight: bold !important;)
+! Title: Dracula HN theme
+news.ycombinator.com##body, .c00:style(color: #f8f8f2 !important; background-color: #21222c !important; )
+news.ycombinator.com##td[bgcolor="#ff6600"]:style(background-color: #444757 !important; )
+news.ycombinator.com##[bgcolor="#f6f6ef"]:style(background-color: #21222c !important; )
+news.ycombinator.com##[bgcolor="#000000"]:style(background-color: #ff5555 !important; )
+news.ycombinator.com##tr#pagespace:style(display: none !important; )
+news.ycombinator.com##b.hnname > a:style(color: #50fa7b !important; )
+news.ycombinator.com##a:style(color: #bd93f9 !important; )
+news.ycombinator.com##.subline, .toptext:style(color: #f8f8f2 !important; )
+news.ycombinator.com##.subline a:style(color: #999 !important; )
+news.ycombinator.com##.score,#hnmain > tbody > tr td:last-child > span.pagetop:style(color: #ff79c6 !important; )
+news.ycombinator.com##.sitestr:style(color: #8be9fd !important; )
+news.ycombinator.com##textarea, input:not([type="hidden"]):style(background-color: #444757 !important; color: #f8f8f2 !important; border: 1px solid #6272a4 !important; border-radius: 3px !important; )
+news.ycombinator.com##input[type="submit"]:style(cursor: pointer !important; font-weight: bold !important;)
+
+! Title: Dracula Theme for hckrnews.com
+! Backgrounds and Base Text
+hckrnews.com##body, #page, .menu, header, .settings:style(background-color: #21222c !important; color: #f8f8f2 !important;)
+
+! Header Links (Logo and Nav)
+hckrnews.com##.logo h1 a:style(color: #50fa7b !important;)
+hckrnews.com##.mainnav a:style(color: #bd93f9 !important;)
+hckrnews.com##header h3, header h3 a:style(color: #6272a4 !important;)
+
+! Story Links
+hckrnews.com##.link.story:style(color: #8be9fd !important; font-weight: 500 !important;)
+hckrnews.com##.link.story:visited:style(color: #6272a4 !important;)
+
+! Metadata (Points, Comments, Source)
+hckrnews.com##.source:style(color: #6272a4 !important; font-size: 0.85em !important;)
+hckrnews.com##.comments:style(color: #bd93f9 !important;)
+hckrnews.com##.points:style(color: #f1fa8c !important;)
+hckrnews.com##.points.homepage:style(color: #ffb86c !important; font-weight: bold !important;)
+
+! Left Sidebar Time Markers (6pm, 12pm, etc)
+hckrnews.com##.entries.io .link span:style(color: #6272a4 !important; border-bottom: 1px solid
 
 ! reddit
 reddit.com##.avatar
