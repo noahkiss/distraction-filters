@@ -28,7 +28,6 @@ hckrnews.com##body, #page, .menu, header, .settings:style(background-color: #242
 ! Header Links (Logo and Nav)
 hckrnews.com##.logo h1 a:style(color: #a6da95 !important;)
 hckrnews.com##.mainnav a:style(color: #8aadf4 !important;)
-hckrnews.com##.nav-pills .filtertop:hover:style(background-color: #363a4f !important;)
 hckrnews.com##header h3, header h3 a:style(color: #a5adcb !important;)
 hckrnews.com##.entries.io.row:style(display: none !important;)
 
@@ -49,7 +48,9 @@ hckrnews.com##.entries.io .link span:style(color: #6e738d !important; border-bot
 
 ! Filter Tabs - active class is on parent li element
 hckrnews.com##.filters a:style(color: #8aadf4 !important;)
-hckrnews.com##.filters .active a:style(background-color: #ff9f43 !important; color: #24273a !important; font-weight: bold !important;)
+hckrnews.com##.nav-pills .filtertop.active:style(background-color: #ff9f43 !important; color: #24273a !important; font-weight: bold !important;)
+hckrnews.com##.nav-pills .filtertop:hover:style(background-color: #363a4f !important;)
+hckrnews.com##.nav-pills .filtertop.active:hover:style(background-color: #ff9f43 !important;)
 hckrnews.com##.autorefresh:style(color: #6e738d !important;)
 
 ! Hover states
