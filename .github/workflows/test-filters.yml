@@ -1,0 +1,54 @@
+name: Generate Filter Test Issue
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'social.txt'
+
+jobs:
+  create-test-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate test commands JSON
+        id: generate
+        run: node .github/scripts/generate-issue-data.js > issue-data.json
+
+      - name: Create issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('issue-data.json', 'utf8'));
+
+            // Create the issue
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🧪 Test filters: ${new Date().toISOString().split('T')[0]}`,
+              body: data.body,
+              labels: ['testing']
+            });
+
+            console.log(`Created issue #${issue.data.number}`);
+
+            // Add a comment for each domain
+            for (const domain of data.domains) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.data.number,
+                body: domain.comment
+              });
+              console.log(`Added comment for ${domain.name}`);
+            }

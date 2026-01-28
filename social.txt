@@ -39,7 +39,12 @@ hckrnews.com##.points:style(color: #f1fa8c !important;)
 hckrnews.com##.points.homepage:style(color: #ffb86c !important; font-weight: bold !important;)
 
 ! Left Sidebar Time Markers (6pm, 12pm, etc)
-hckrnews.com##.entries.io .link span:style(color: #6272a4 !important; border-bottom: 1px solid
+hckrnews.com##.entries.io .link span:style(color: #6272a4 !important; border-bottom: 1px solid #6272a4 !important;)
+
+! Filter Tabs and Controls
+hckrnews.com##.filters a:style(color: #bd93f9 !important;)
+hckrnews.com##.filters a.active:style(background-color: #44475a !important; color: #f8f8f2 !important;)
+hckrnews.com##.autorefresh:style(color: #6272a4 !important;)
 
 ! reddit
 reddit.com##.avatar
