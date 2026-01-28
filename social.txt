@@ -28,7 +28,9 @@ hckrnews.com##body, #page, .menu, header, .settings:style(background-color: #242
 ! Header Links (Logo and Nav)
 hckrnews.com##.logo h1 a:style(color: #a6da95 !important;)
 hckrnews.com##.mainnav a:style(color: #8aadf4 !important;)
+hckrnews.com##.nav-pills .filtertop:hover:style(background-color: #363a4f !important;)
 hckrnews.com##header h3, header h3 a:style(color: #a5adcb !important;)
+hckrnews.com##entries.io.row:style(display: none !important;)
 
 ! Story Links
 hckrnews.com##.link.story:style(color: #91d7e3 !important;)
