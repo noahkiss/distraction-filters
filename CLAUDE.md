@@ -206,8 +206,8 @@ Just close the issue when testing is complete.
 
 | Site | Hiding | Theme |
 |------|--------|-------|
-| news.ycombinator.com | Yes | Dracula |
-| hckrnews.com | No | Catppuccin Mocha |
+| news.ycombinator.com | Yes | Catppuccin Macchiato |
+| hckrnews.com | No | Catppuccin Macchiato |
 | reddit.com | Yes | No |
 | old.reddit.com | Yes | No |
 | facebook.com | Yes | No |
@@ -216,11 +216,17 @@ Just close the issue when testing is complete.
 
 ## Theme Accessibility Notes
 
-- **Preserve semantic colors**: If the original site uses color to convey meaning (e.g., orange = popularity), keep that color in the dark theme
+- **Preserve semantic colors**: If the original site uses color to convey meaning (e.g., orange = HN homepage), keep that color
 - **Contrast ratios**: Aim for WCAG AA (4.5:1 for normal text, 3:1 for large text)
-- **Catppuccin Mocha** is preferred over strict Dracula for better accessibility:
-  - Background: `#1e1e2e`
-  - Text: `#cdd6f4` (11.5:1 contrast ratio)
-  - Muted: `#9399b2`
-  - Links: `#89b4fa` (blue), `#89dceb` (cyan)
-  - Accent: `#a6e3a1` (green), `#fab387` (peach/orange)
+- **Catppuccin Macchiato** palette:
+  - Background: `#24273a`
+  - Text: `#cad3f5`
+  - Muted: `#6e738d`, `#8087a2`
+  - Surface: `#363a4f`, `#494d64`
+  - Links: `#8aadf4` (blue), `#91d7e3` (sky)
+  - Accent: `#a6da95` (green), `#ff9f43` (bright orange for semantic)
+
+### hckrnews.com Points System
+- `.points.homepage` = orange - post made it to HN homepage (important)
+- `.points` (no homepage) = gray - regular post
+- Filter tabs: `active` class is on parent `<li>`, not `<a>`

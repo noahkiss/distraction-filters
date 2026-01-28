@@ -100,20 +100,20 @@ When you push changes to `social.txt`, a GitHub Action automatically creates a t
 
 ## Theme Colors
 
-Themes use **Catppuccin Mocha** for better accessibility while preserving semantic colors from the original sites.
+Themes use **Catppuccin Macchiato** for better accessibility while preserving semantic colors from the original sites.
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| Background | `#1e1e2e` | Page backgrounds |
-| Text | `#cdd6f4` | Main text (11.5:1 contrast) |
-| Muted | `#9399b2` | Secondary text, metadata |
-| Surface | `#45475a` | Borders, dividers |
-| Blue | `#89b4fa` | Navigation links |
-| Cyan | `#89dceb` | Story/content links |
-| Green | `#a6e3a1` | Logo, success states |
-| Peach | `#fab387` | Points, popularity (semantic) |
+| Background | `#24273a` | Page backgrounds |
+| Text | `#cad3f5` | Main text |
+| Muted | `#6e738d` | Secondary text, metadata |
+| Surface | `#363a4f` | Hover states, borders |
+| Blue | `#8aadf4` | Navigation links |
+| Sky | `#91d7e3` | Story/content links |
+| Green | `#a6da95` | Logo, success states |
+| Orange | `#ff9f43` | Semantic: HN homepage posts |
 
-**Accessibility note**: Original semantic colors (like orange for popularity) are preserved to maintain information hierarchy.
+**Accessibility note**: Original semantic colors (like orange for HN homepage posts) are preserved to maintain information hierarchy.
 
 ## Contributing
 
