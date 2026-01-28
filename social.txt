@@ -19,32 +19,36 @@ news.ycombinator.com##.sitestr:style(color: #8be9fd !important; )
 news.ycombinator.com##textarea, input:not([type="hidden"]):style(background-color: #444757 !important; color: #f8f8f2 !important; border: 1px solid #6272a4 !important; border-radius: 3px !important; )
 news.ycombinator.com##input[type="submit"]:style(cursor: pointer !important; font-weight: bold !important;)
 
-! Title: Dracula Theme for hckrnews.com
+! Title: Dark Theme for hckrnews.com (Catppuccin Mocha)
+! Accessible dark theme preserving semantic colors (orange = popularity)
+
 ! Backgrounds and Base Text
-hckrnews.com##body, #page, .menu, header, .settings:style(background-color: #21222c !important; color: #f8f8f2 !important;)
+hckrnews.com##body, #page, .menu, header, .settings:style(background-color: #1e1e2e !important; color: #cdd6f4 !important;)
 
 ! Header Links (Logo and Nav)
-hckrnews.com##.logo h1 a:style(color: #50fa7b !important;)
-hckrnews.com##.mainnav a:style(color: #bd93f9 !important;)
-hckrnews.com##header h3, header h3 a:style(color: #6272a4 !important;)
+hckrnews.com##.logo h1 a:style(color: #a6e3a1 !important;)
+hckrnews.com##.mainnav a:style(color: #89b4fa !important;)
+hckrnews.com##header h3, header h3 a:style(color: #9399b2 !important;)
 
-! Story Links
-hckrnews.com##.link.story:style(color: #8be9fd !important; font-weight: 500 !important;)
-hckrnews.com##.link.story:visited:style(color: #6272a4 !important;)
+! Story Links - high contrast cyan
+hckrnews.com##.link.story:style(color: #89dceb !important;)
+hckrnews.com##.link.story:visited:style(color: #9399b2 !important;)
 
-! Metadata (Points, Comments, Source)
-hckrnews.com##.source:style(color: #6272a4 !important; font-size: 0.85em !important;)
-hckrnews.com##.comments:style(color: #bd93f9 !important;)
-hckrnews.com##.points:style(color: #f1fa8c !important;)
-hckrnews.com##.points.homepage:style(color: #ffb86c !important; font-weight: bold !important;)
+! Points - KEEP ORANGE to preserve semantic meaning (popularity indicator)
+hckrnews.com##.points:style(color: #fab387 !important;)
+hckrnews.com##.points.homepage:style(color: #fab387 !important; font-weight: bold !important;)
 
-! Left Sidebar Time Markers (6pm, 12pm, etc)
-hckrnews.com##.entries.io .link span:style(color: #6272a4 !important; border-bottom: 1px solid #6272a4 !important;)
+! Comments and Source - muted but readable
+hckrnews.com##.source:style(color: #9399b2 !important;)
+hckrnews.com##.comments:style(color: #9399b2 !important;)
 
-! Filter Tabs and Controls
-hckrnews.com##.filters a:style(color: #bd93f9 !important;)
-hckrnews.com##.filters a.active:style(background-color: #44475a !important; color: #f8f8f2 !important;)
-hckrnews.com##.autorefresh:style(color: #6272a4 !important;)
+! Time Markers
+hckrnews.com##.entries.io .link span:style(color: #9399b2 !important; border-bottom: 1px solid #45475a !important;)
+
+! Filter Tabs - keep orange for active state
+hckrnews.com##.filters a:style(color: #89b4fa !important;)
+hckrnews.com##.filters a.active:style(background-color: #fab387 !important; color: #1e1e2e !important;)
+hckrnews.com##.autorefresh:style(color: #9399b2 !important;)
 
 ! reddit
 reddit.com##.avatar

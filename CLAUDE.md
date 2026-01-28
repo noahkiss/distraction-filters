@@ -53,11 +53,13 @@ domain.com##selector:style(property: value !important;)
 
 ### hckrnews.com
 - **Fixed 2026-01-27**: Line 42 had incomplete CSS rule (missing border color and closing paren)
-- **Tested 2026-01-27**: Theme verified working via Playwright CSS injection
+- **Updated 2026-01-28**: Switched to Catppuccin Mocha for better accessibility
+- **Key decision**: Keep orange for points/active tabs (preserves semantic "popularity" meaning)
 - Site uses `.entries.io` class for story entries
 - Time markers use `.link span` inside entries
 - Filter tabs use `.filters a` with `.active` class for selected state
 - Auto-refresh indicator uses `.autorefresh` class
+- "Last Visit" marker appears between entries
 
 ### Hacker News (news.ycombinator.com)
 - Uses table-based layout with `bgcolor` attributes
@@ -205,9 +207,20 @@ Just close the issue when testing is complete.
 | Site | Hiding | Theme |
 |------|--------|-------|
 | news.ycombinator.com | Yes | Dracula |
-| hckrnews.com | No | Dracula |
+| hckrnews.com | No | Catppuccin Mocha |
 | reddit.com | Yes | No |
 | old.reddit.com | Yes | No |
 | facebook.com | Yes | No |
 | youtube.com | Yes | No |
 | m.youtube.com | Yes | No |
+
+## Theme Accessibility Notes
+
+- **Preserve semantic colors**: If the original site uses color to convey meaning (e.g., orange = popularity), keep that color in the dark theme
+- **Contrast ratios**: Aim for WCAG AA (4.5:1 for normal text, 3:1 for large text)
+- **Catppuccin Mocha** is preferred over strict Dracula for better accessibility:
+  - Background: `#1e1e2e`
+  - Text: `#cdd6f4` (11.5:1 contrast ratio)
+  - Muted: `#9399b2`
+  - Links: `#89b4fa` (blue), `#89dceb` (cyan)
+  - Accent: `#a6e3a1` (green), `#fab387` (peach/orange)

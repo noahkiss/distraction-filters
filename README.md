@@ -98,20 +98,22 @@ node test-filters.js hn --headed   # Test with visible browser
 
 When you push changes to `social.txt`, a GitHub Action automatically creates a test issue with copy-paste console commands for each domain. Just test each site and close the issue when done.
 
-## Theme Colors (Dracula)
+## Theme Colors
+
+Themes use **Catppuccin Mocha** for better accessibility while preserving semantic colors from the original sites.
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| Background | `#21222c` | Page backgrounds |
-| Foreground | `#f8f8f2` | Main text |
-| Comment | `#6272a4` | Muted text, borders |
-| Cyan | `#8be9fd` | Story links |
-| Green | `#50fa7b` | Logo/brand |
-| Orange | `#ffb86c` | Highlights |
-| Pink | `#ff79c6` | Scores, accents |
-| Purple | `#bd93f9` | Links |
-| Red | `#ff5555` | Errors, separators |
-| Yellow | `#f1fa8c` | Points |
+| Background | `#1e1e2e` | Page backgrounds |
+| Text | `#cdd6f4` | Main text (11.5:1 contrast) |
+| Muted | `#9399b2` | Secondary text, metadata |
+| Surface | `#45475a` | Borders, dividers |
+| Blue | `#89b4fa` | Navigation links |
+| Cyan | `#89dceb` | Story/content links |
+| Green | `#a6e3a1` | Logo, success states |
+| Peach | `#fab387` | Points, popularity (semantic) |
+
+**Accessibility note**: Original semantic colors (like orange for popularity) are preserved to maintain information hierarchy.
 
 ## Contributing
 
