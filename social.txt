@@ -52,6 +52,7 @@ hckrnews.com##.autorefresh:style(color: #6e738d !important;)
 
 ! Hover states
 hckrnews.com##.entry:hover:style(background-color: #363a4f !important;)
+hckrnews.com##.entries a:hover:style(background-color: #363a4f !important;)
 hckrnews.com##.hn:hover:style(background-color: #363a4f !important;)
 
 ! reddit
