@@ -70,7 +70,6 @@ reddit.com##.relative.inline-block.rounded-full
 reddit.com##.right-sidebar
 reddit.com##.shreddit-subreddit-icon__icon
 reddit.com##.user-hover-card
-reddit.com##.w-full.masthead
 reddit.com###feed-next-page-partial
 reddit.com##article
 reddit.com##auth-flow-google-one-tap-prompt
@@ -117,6 +116,7 @@ youtube.com##.ytp-next-button
 youtube.com##.ytp-suggestion-set
 youtube.com##.ytp-endscreen-content
 youtube.com##.ytp-videowall-still-info
+youtube.com##a.ytmPaidContentOverlayLink
 ! main elements
 ! youtube.com###secondary
 ! youtube.com###masthead

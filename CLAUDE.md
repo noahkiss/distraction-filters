@@ -70,6 +70,8 @@ domain.com##selector:style(property: value !important;)
 - New Reddit uses web components (`shreddit-*`, `faceplate-*`)
 - Old Reddit uses traditional classes (`.side`, `.menuarea`)
 - Both need separate rules
+- **Verified 2026-07-13 (live CDP against r/pics feed + a post page)**: Post content images are NOT wrapped by `faceplate-loader` (0 matches) — that rule is a red herring for images. On the feed, post media is wrapped by `article` (whole post card, hidden intentionally) and `shreddit-async-loader` (118/200 feed media). On a single post page, NO current rule wraps the main content image. So there is no single "post image" rule; media loss comes from broad wrappers (`article`, `shreddit-async-loader`).
+- **Login caveat**: CDP test Chrome is logged out, so login-only elements (`.avatar`, `.user-hover-card`, `.community-hover-card`, `.relative.inline-block.rounded-full` avatars) report 0 matches but are NOT dead. Don't prune rules based on logged-out match counts.
 
 ### YouTube
 - **Tested 2026-01-27**: Desktop YouTube works in Playwright (not blocked)
