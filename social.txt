@@ -1,7 +1,7 @@
 ! Title: distraction-filters (social)
 ! Description: Cosmetic filters to hide distractions and apply dark themes on social/news sites (HN, hckrnews, Reddit, Facebook, YouTube)
 ! Homepage: https://github.com/noahkiss/distraction-filters
-! Version: 1.0.0
+! Version: 2026.07.13
 ! Last modified: 2026-07-13
 ! Expires: 1 day
 ! License: The Unlicense; https://github.com/noahkiss/distraction-filters/blob/main/LICENSE

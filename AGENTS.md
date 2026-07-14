@@ -14,15 +14,19 @@ This repo contains cosmetic filters for uBlock Origin and AdGuard that:
 `! Last modified:`, `! Expires:`, etc.). uBlock Origin surfaces `Version` and
 `Last modified` in the filter-list details, so they must be kept current.
 
-**MANDATORY on every change to `social.txt`:**
-1. **Bump `! Version:`** — increment the last number (e.g. `1.0.0` → `1.0.1`). It is a
-   monotonic counter, not semver in spirit; it must always go up, never repeat.
-   Use the middle number for a batch of related additions, the first only for a
-   structural overhaul.
-2. **Set `! Last modified:`** to today's date (`YYYY-MM-DD`).
+The version is **date-based**: `! Version: YYYY.MM.DD`. If more than one change lands on
+the same day, append a monotonic same-day counter: `2026.07.13` → `2026.07.13.1` →
+`2026.07.13.2` (uBO compares dot-separated numeric components, so these order correctly).
 
-Do this in the same commit as the filter change. Never edit `social.txt` rules without
-bumping the version.
+**MANDATORY — do this on EVERY change to `social.txt`, in the same commit, without
+exception:**
+1. **Set `! Version:` to today's date** (`YYYY.MM.DD`). If today's date already equals the
+   current version, append/increment the same-day counter instead so the value always
+   changes upward.
+2. **Set `! Last modified:` to today's date** (`YYYY-MM-DD`).
+
+Never edit `social.txt` rules without updating both fields. If you touch a filter line and
+the version still shows a past date, that is a bug — fix it before committing.
 
 ## Filter Syntax Reference
 
