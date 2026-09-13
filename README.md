@@ -32,6 +32,26 @@ Or copy the contents directly into your custom filters.
 - **news.ycombinator.com** - Full Dracula theme
 - **hckrnews.com** - Full Dracula theme
 
+## Userscripts
+
+`userscripts/` holds Greasemonkey-style scripts for things a cosmetic filter cannot do. They work in any userscript manager (Tampermonkey, Violentmonkey, Userscripts for Safari, wBlock).
+
+| Script | What it does |
+|--------|--------------|
+| `youtube-desktop-ipad.user.js` | Keeps YouTube on the desktop site on iPad Safari. Since August 2026 YouTube sends iPad Safari to `m.youtube.com` even with "Request Desktop Website" on. The script bounces back to `www.youtube.com` with `app=desktop&persist_app=1`, stops after three redirects if YouTube refuses, and strips the params from the address bar once the desktop site loads. |
+
+Install by adding the raw URL to your userscript manager:
+
+```
+https://raw.githubusercontent.com/noahkiss/distraction-filters/main/userscripts/youtube-desktop-ipad.user.js
+```
+
+Test without a browser:
+
+```bash
+node userscripts/youtube-desktop-ipad.test.js
+```
+
 ## Filter Syntax
 
 These filters use cosmetic filtering syntax compatible with both uBlock Origin and AdGuard.
