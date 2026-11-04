@@ -91,6 +91,7 @@ domain.com##selector:style(property: value !important;)
 - Old Reddit uses traditional classes (`.side`, `.menuarea`)
 - Both need separate rules
 - **Verified 2026-07-13 (live CDP against r/pics feed + a post page)**: Post content images are NOT wrapped by `faceplate-loader` (0 matches) — that rule is a red herring for images. On the feed, post media is wrapped by `article` (whole post card, hidden intentionally) and `shreddit-async-loader` (118/200 feed media). On a single post page, NO current rule wraps the main content image. So there is no single "post image" rule; media loss comes from broad wrappers (`article`, `shreddit-async-loader`).
+- **Fixed 2026-11-03 (live Safari, post pages)**: `shreddit-async-loader` wraps post media on post pages: `bundlename="gallery_carousel"` (galleries), `shreddit_player_loader` (Reddit video), `embed` (YouTube and other third-party embeds). The broad rule hid all of them. It now excludes those three bundles and still hides the other loaders (header items, overflow menu, ads). Plain image posts and link thumbnails were never hidden by a rule. `article` matched no media on post pages.
 - **Login caveat**: CDP test Chrome is logged out, so login-only elements (`.avatar`, `.user-hover-card`, `.community-hover-card`, `.relative.inline-block.rounded-full` avatars) report 0 matches but are NOT dead. Don't prune rules based on logged-out match counts.
 
 ### YouTube
