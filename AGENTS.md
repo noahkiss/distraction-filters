@@ -1,7 +1,5 @@
 # Agent Instructions for distraction-filters
 
-> **Note**: This file should always be updated with new learnings about filter syntax, site-specific quirks, and testing approaches.
-
 ## Project Overview
 
 This repo contains cosmetic filters for uBlock Origin and AdGuard that:
@@ -41,17 +39,6 @@ domain.com##selector           # Hide element matching CSS selector
 domain.com##selector:style(css)  # Apply inline CSS instead of hiding
 ```
 
-### Supported Selectors (both uBlock & AdGuard)
-
-| Type | Example | Description |
-|------|---------|-------------|
-| Element | `##div` | All divs |
-| Class | `##.sidebar` | Elements with class |
-| ID | `###header` | Element with ID |
-| Attribute | `##[role="complementary"]` | Attribute selector |
-| Descendant | `##.parent .child` | Nested elements |
-| Pseudo-class | `##a:visited` | CSS pseudo-classes |
-
 ### The `:style()` Procedural Cosmetic
 
 ```
@@ -62,24 +49,17 @@ domain.com##selector:style(property: value !important;)
 - Multiple properties separated by semicolons
 - Must end with `)` - incomplete rules break the filter
 
-### Comments
+Lines starting with `!` are comments.
 
-```
-! This is a comment
-! Title: Section Name
-```
-
-## Known Issues & Learnings
+## Site Notes
 
 ### hckrnews.com
-- **Fixed 2026-01-27**: Line 42 had incomplete CSS rule (missing border color and closing paren)
-- **Updated 2026-01-28**: Switched to Catppuccin Mocha for better accessibility
-- **Key decision**: Keep orange for points/active tabs (preserves semantic "popularity" meaning)
-- Site uses `.entries.io` class for story entries
-- Time markers use `.link span` inside entries
-- Filter tabs use `.filters a` with `.active` class for selected state
-- Auto-refresh indicator uses `.autorefresh` class
-- "Last Visit" marker appears between entries
+- Story entries use the `.entries.io` class.
+- Time markers use `.link span` inside entries.
+- Filter tabs use `.filters a`; the `.active` class marks the selected tab.
+- The auto-refresh indicator uses the `.autorefresh` class.
+- A "Last Visit" marker appears between entries.
+- Points and active tabs stay orange, because orange means "popular" on this site.
 
 ### Hacker News (news.ycombinator.com)
 - Uses table-based layout with `bgcolor` attributes
@@ -87,21 +67,24 @@ domain.com##selector:style(property: value !important;)
 - Orange header bar: `td[bgcolor="#ff6600"]`
 
 ### Reddit
-- New Reddit uses web components (`shreddit-*`, `faceplate-*`)
-- Old Reddit uses traditional classes (`.side`, `.menuarea`)
-- Both need separate rules
-- **Verified 2026-07-13 (live CDP against r/pics feed + a post page)**: Post content images are NOT wrapped by `faceplate-loader` (0 matches) — that rule is a red herring for images. On the feed, post media is wrapped by `article` (whole post card, hidden intentionally) and `shreddit-async-loader` (118/200 feed media). On a single post page, NO current rule wraps the main content image. So there is no single "post image" rule; media loss comes from broad wrappers (`article`, `shreddit-async-loader`).
-- **Fixed 2026-11-03 (live Safari, post pages)**: `shreddit-async-loader` wraps post media on post pages: `bundlename="gallery_carousel"` (galleries), `shreddit_player_loader` (Reddit video), `embed` (YouTube and other third-party embeds). The broad rule hid all of them. It now excludes those three bundles and still hides the other loaders (header items, overflow menu, ads). Plain image posts and link thumbnails were never hidden by a rule. `article` matched no media on post pages.
-- **Login caveat**: CDP test Chrome is logged out, so login-only elements (`.avatar`, `.user-hover-card`, `.community-hover-card`, `.relative.inline-block.rounded-full` avatars) report 0 matches but are NOT dead. Don't prune rules based on logged-out match counts.
+- New Reddit uses web components (`shreddit-*`, `faceplate-*`).
+- Old Reddit uses traditional classes (`.side`, `.menuarea`).
+- Both need separate rules.
+- `faceplate-loader` does not wrap post content images.
+- On the feed, `article` (the whole post card, hidden on purpose) and `shreddit-async-loader` wrap post media.
+- On post pages, `shreddit-async-loader` wraps post media with `bundlename="gallery_carousel"` (galleries), `shreddit_player_loader` (Reddit video) and `embed` (YouTube and other embeds). The rule excludes those three bundles and hides the other loaders (header items, overflow menu, ads).
+- Plain image posts and link thumbnails match no rule.
+- Some elements appear only when logged in (`.avatar`, `.user-hover-card`, `.community-hover-card`, `.relative.inline-block.rounded-full` avatars). A logged-out browser reports 0 matches for them. Do not prune rules based on logged-out match counts.
+- Reddit blocks standard Playwright with a 403. `playwright-extra` with a stealth plugin or a residential proxy works around it. For CSS filter testing, manual DevTools testing is simpler.
 
 ### YouTube
-- **Tested 2026-01-27**: Desktop YouTube works in Playwright (not blocked)
-- Heavily dynamic, elements load async
-- Player controls: `.ytp-*` classes
-- Desktop elements (sidebar, header) are commented out - only player distractions active
-- Mobile site (`m.youtube.com`) has more active filters - different structure
-- Player filters (next button, suggestions, endscreen) only visible during hover/video end
-- **iPad forced-mobile redirect (since ~2026-08-05)**: YouTube sends iPad Safari to `m.youtube.com/?ra=m` even with "Request Desktop Website" on. Server-side and account-tied (only after sign-in). `?app=desktop&persist_app=1` on `www.youtube.com` forces the desktop site. `userscripts/youtube-desktop-ipad.user.js` applies that on every load. Derived from Greasy Fork script 594338 (MIT); adds a per-origin `sessionStorage` redirect-loop guard, address-bar cleanup via `history.replaceState`, and iPad detection that does not depend only on the deprecated `navigator.platform`.
+- Desktop YouTube works in Playwright.
+- The page is heavily dynamic; elements load async.
+- Player controls use `.ytp-*` classes.
+- Desktop elements (sidebar, header) are commented out; only player distractions are active.
+- The mobile site (`m.youtube.com`) has a different structure and more active filters.
+- Player filters (next button, suggestions, endscreen) are visible only on hover or at video end.
+- YouTube sends a signed-in iPad Safari to `m.youtube.com/?ra=m`, even with "Request Desktop Website" on. `?app=desktop&persist_app=1` on `www.youtube.com` forces the desktop site. `userscripts/youtube-desktop-ipad.user.js` applies that on every load. It derives from Greasy Fork script 594338 (MIT) and adds a per-origin `sessionStorage` redirect-loop guard, address-bar cleanup via `history.replaceState`, and iPad detection that does not depend only on the deprecated `navigator.platform`.
 - With "Request Desktop Website" on, iPad Safari reports a Mac user agent. Detect the iPad as Mac + `navigator.maxTouchPoints > 1`; a real Mac has zero touch points.
 
 ## Userscripts
@@ -111,49 +94,9 @@ domain.com##selector:style(property: value !important;)
 - `sessionStorage` is per origin. A redirect between `m.youtube.com` and `www.youtube.com` sees a separate store on each side, which is why the loop guard counts on the origin it redirects from.
 - CI (`test-filters.yml`) only fires on `social.txt` changes; userscript changes do not create test issues.
 
-### Reddit
-- **Tested 2026-01-27**: Blocked by Reddit (403 error) in standard Playwright
-- **Workarounds**: `playwright-extra` + stealth plugin, or residential proxies (see https://www.zenrows.com/blog/playwright-stealth)
-- **Recommendation**: For CSS filter testing, manual DevTools testing is simpler than stealth infrastructure
-- New Reddit uses web components (`shreddit-*`, `faceplate-*`)
-- Old Reddit uses traditional classes (`.side`, `.menuarea`)
-- Both need separate rules
-
 ## Testing Approaches
 
-### Quick Manual Testing
-1. Open browser DevTools (F12)
-2. Go to Elements panel
-3. Add `<style>` block with your CSS
-4. Or use uBlock Origin's "element picker" mode
-
-### Using Playwright for Automated Testing
-For repeatable testing, inject CSS via Playwright:
-
-```javascript
-const { chromium } = require('playwright');
-
-(async () => {
-  const browser = await chromium.launch({ headless: false });
-  const page = await browser.newPage();
-
-  // Navigate first
-  await page.goto('https://hckrnews.com');
-
-  // Inject custom CSS
-  await page.addStyleTag({
-    content: `
-      body, #page { background-color: #21222c !important; color: #f8f8f2 !important; }
-      .link.story { color: #8be9fd !important; }
-    `
-  });
-
-  // Take screenshot for verification
-  await page.screenshot({ path: 'hckrnews-themed.png' });
-
-  await browser.close();
-})();
-```
+Use uBlock Origin's element picker, or add a `<style>` block in DevTools, for a quick check. `generate-test-css.js` and `test-filters.js` are described under "Testing Filters".
 
 ### Converting Filters to CSS for Testing
 
@@ -178,7 +121,7 @@ body { background: #21222c !important; }
 - `userscripts/*.user.js` - Greasemonkey-style scripts for behavior a cosmetic filter cannot express (redirects, URL rewrites)
 - `userscripts/*.test.js` - Node test for the matching script, run with `node userscripts/<name>.test.js`
 - `README.md` - User-facing documentation
-- `CLAUDE.md` - This file (development notes)
+- `AGENTS.md` - This file (agent and contributor notes); `CLAUDE.md` imports it
 
 ## Testing Filters
 
@@ -234,7 +177,6 @@ Just close the issue when testing is complete.
 1. Add a comment header: `! sitename`
 2. Group hiding rules first, then `:style()` theming rules
 3. Test in browser DevTools before committing
-4. Update this file with any site-specific learnings
 
 ## Sites Covered
 
