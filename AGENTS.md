@@ -4,7 +4,10 @@
 
 This repo contains cosmetic filters for uBlock Origin and AdGuard that:
 1. Hide distracting UI elements (sidebars, feeds, recommendations)
-2. Apply dark themes (Dracula) to specific sites
+2. Apply dark themes to specific sites
+
+`README.md` covers installation, filter syntax, the test commands, the GitHub test-issue
+workflow, and the theme palette. This file holds what a contributor needs beyond that.
 
 ## Filter List Header & Versioning
 
@@ -26,40 +29,30 @@ exception:**
 Never edit `social.txt` rules without updating both fields. If you touch a filter line and
 the version still shows a past date, that is a bug — fix it before committing.
 
-## Filter Syntax Reference
+## Writing Filters
 
-### Compatibility: uBlock Origin vs AdGuard
+- Use only the cosmetic syntax common to uBlock Origin and AdGuard.
+- A `:style()` rule must end with `)`; an incomplete rule breaks the filter. Use `!important` to override site styles.
+- Add a comment header per site: `! sitename`.
+- Group hiding rules first, then `:style()` theming rules.
+- Test in browser DevTools before committing (`node generate-test-css.js <site>`, see README).
+- To check a `:style()` rule by hand, convert it to plain CSS: `hckrnews.com##body:style(background: #21222c !important;)` becomes `body { background: #21222c !important; }`.
 
-Both support the same core cosmetic filter syntax. The filters here use only the common subset.
+## Theme Rules
 
-### Basic Syntax
-
-```
-domain.com##selector           # Hide element matching CSS selector
-domain.com##selector:style(css)  # Apply inline CSS instead of hiding
-```
-
-### The `:style()` Procedural Cosmetic
-
-```
-domain.com##selector:style(property: value !important;)
-```
-
-- Use `!important` to override site styles
-- Multiple properties separated by semicolons
-- Must end with `)` - incomplete rules break the filter
-
-Lines starting with `!` are comments.
+- **Preserve semantic colors**: if the original site uses color to convey meaning (e.g., orange = HN homepage), keep that color.
+- **Contrast ratios**: aim for WCAG AA (4.5:1 for normal text, 3:1 for large text).
+- Use the Catppuccin Macchiato palette listed in `README.md`.
 
 ## Site Notes
 
 ### hckrnews.com
 - Story entries use the `.entries.io` class.
 - Time markers use `.link span` inside entries.
-- Filter tabs use `.filters a`; the `.active` class marks the selected tab.
+- Filter tabs use `.filters a`; the `active` class is on the parent `<li>`, not the `<a>`.
 - The auto-refresh indicator uses the `.autorefresh` class.
 - A "Last Visit" marker appears between entries.
-- Points and active tabs stay orange, because orange means "popular" on this site.
+- `.points.homepage` = orange: the post made the HN homepage. `.points` alone = gray. Points and active tabs stay orange, because orange means "popular" on this site.
 
 ### Hacker News (news.ycombinator.com)
 - Uses table-based layout with `bgcolor` attributes
@@ -82,127 +75,22 @@ Lines starting with `!` are comments.
 - The page is heavily dynamic; elements load async.
 - Player controls use `.ytp-*` classes.
 - Desktop elements (sidebar, header) are commented out; only player distractions are active.
-- The mobile site (`m.youtube.com`) has a different structure and more active filters.
+- The mobile site (`m.youtube.com`) has a different structure and more active filters. Emulate a mobile viewport in DevTools to test it.
 - Player filters (next button, suggestions, endscreen) are visible only on hover or at video end.
 - YouTube sends a signed-in iPad Safari to `m.youtube.com/?ra=m`, even with "Request Desktop Website" on. `?app=desktop&persist_app=1` on `www.youtube.com` forces the desktop site. `userscripts/youtube-desktop-ipad.user.js` applies that on every load. It derives from Greasy Fork script 594338 (MIT) and adds a per-origin `sessionStorage` redirect-loop guard, address-bar cleanup via `history.replaceState`, and iPad detection that does not depend only on the deprecated `navigator.platform`.
 - With "Request Desktop Website" on, iPad Safari reports a Mac user agent. Detect the iPad as Mac + `navigator.maxTouchPoints > 1`; a real Mac has zero touch points.
 
 ## Userscripts
 
-- Scripts live in `userscripts/` as `<name>.user.js` with a sibling `<name>.test.js`.
+- Scripts live in `userscripts/` as `<name>.user.js` with a sibling `<name>.test.js`. Run a test with `node userscripts/<name>.test.js`.
 - The existing test mocks `navigator`, `location`, `history`, and `sessionStorage`, runs the script with `vm.runInNewContext`, and asserts on what `location.replace` was called with. It needs only Node.
 - `sessionStorage` is per origin. A redirect between `m.youtube.com` and `www.youtube.com` sees a separate store on each side, which is why the loop guard counts on the origin it redirects from.
 - CI (`test-filters.yml`) only fires on `social.txt` changes; userscript changes do not create test issues.
 
-## Testing Approaches
+## Files
 
-Use uBlock Origin's element picker, or add a `<style>` block in DevTools, for a quick check. `generate-test-css.js` and `test-filters.js` are described under "Testing Filters".
-
-### Converting Filters to CSS for Testing
-
-The `:style()` filters can be extracted to plain CSS:
-
-```
-hckrnews.com##body:style(background: #21222c !important;)
-```
-
-Becomes:
-
-```css
-body { background: #21222c !important; }
-```
-
-## File Structure
-
-- `social.txt` - Main filter list for social/news sites
-- `generate-test-css.js` - Generate console commands for manual testing (recommended)
-- `test-filters.js` - Playwright-based automated screenshot testing
-- `test-commands.md` - Pre-generated console commands for all sites (generated by --all)
-- `userscripts/*.user.js` - Greasemonkey-style scripts for behavior a cosmetic filter cannot express (redirects, URL rewrites)
-- `userscripts/*.test.js` - Node test for the matching script, run with `node userscripts/<name>.test.js`
-- `README.md` - User-facing documentation
-- `AGENTS.md` - This file (agent and contributor notes); `CLAUDE.md` imports it
-
-## Testing Filters
-
-### Quick Manual Testing (Recommended)
-
-Use `generate-test-css.js` to create copy-paste console commands:
-
-```bash
-# List all domains and their rule counts
-node generate-test-css.js
-
-# Generate console command for a specific site
-node generate-test-css.js hckrnews
-
-# Generate all commands to test-commands.md
-node generate-test-css.js --all
-```
-
-Then:
-1. Open the target site in your browser
-2. Open DevTools (F12) > Console
-3. Paste the generated command
-4. To remove: paste the remove command
-
-**For mobile sites** (m.youtube.com): Use DevTools device toolbar (Ctrl+Shift+M) to emulate mobile viewport before testing.
-
-### Automated Playwright Testing
-
-Use `test-filters.js` for automated screenshot comparison:
-
-```bash
-# Requires: npm install playwright
-node test-filters.js --list
-node test-filters.js hckrnews        # Generate before/after screenshots
-node test-filters.js hn --headed     # Test with visible browser
-```
-
-**Note**: Reddit blocks Playwright (403). Use manual DevTools testing for Reddit.
-
-### GitHub Workflow (Automatic)
-
-When `social.txt` is pushed to main, a GitHub Action automatically:
-1. Creates a new issue titled "🧪 Test filters: YYYY-MM-DD"
-2. Adds a comment for each domain with copy-paste console commands
-3. Each comment has checkboxes to track testing progress
-
-Just close the issue when testing is complete.
-
-**Setup**: Create a `testing` label in the repo (the workflow uses it).
-
-## Adding New Filters
-
-1. Add a comment header: `! sitename`
-2. Group hiding rules first, then `:style()` theming rules
-3. Test in browser DevTools before committing
-
-## Sites Covered
-
-| Site | Hiding | Theme |
-|------|--------|-------|
-| news.ycombinator.com | Yes | Catppuccin Macchiato |
-| hckrnews.com | No | Catppuccin Macchiato |
-| reddit.com | Yes | No |
-| old.reddit.com | Yes | No |
-| facebook.com | Yes | No |
-| youtube.com | Yes | No |
-| m.youtube.com | Yes | No |
-
-## Theme Accessibility Notes
-
-- **Preserve semantic colors**: If the original site uses color to convey meaning (e.g., orange = HN homepage), keep that color
-- **Contrast ratios**: Aim for WCAG AA (4.5:1 for normal text, 3:1 for large text)
-- **Catppuccin Macchiato** palette:
-  - Background: `#24273a`
-  - Text: `#cad3f5`
-  - Muted: `#6e738d`, `#8087a2`
-  - Surface: `#363a4f`, `#494d64`
-  - Links: `#8aadf4` (blue), `#91d7e3` (sky)
-  - Accent: `#a6da95` (green), `#ff9f43` (bright orange for semantic)
-
-### hckrnews.com Points System
-- `.points.homepage` = orange - post made it to HN homepage (important)
-- `.points` (no homepage) = gray - regular post
-- Filter tabs: `active` class is on parent `<li>`, not `<a>`
+- `social.txt` - the filter list
+- `generate-test-css.js` - generates DevTools console commands for manual testing
+- `test-commands.md` - output of `node generate-test-css.js --all`; regenerate, do not hand-edit
+- `test-filters.js` - Playwright before/after screenshot testing
+- `.github/workflows/test-filters.yml` - opens a test issue on `social.txt` pushes; needs a `testing` label in the repo
